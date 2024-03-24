@@ -11,6 +11,9 @@
       "pre-commit": "prettier --write . && git add -A ."
     }
   },
+  "resolutions": {
+    "webpack": "^5"
+  },
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",

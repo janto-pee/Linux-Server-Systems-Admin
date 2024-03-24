@@ -1,0 +1,47 @@
+npm ERR! code 1
+npm ERR! path C:\Users\aayo\Documents\Remote Project\2024 Active Project\python-and-DRF-with-terraform\frontend\node_modules\sharp
+npm ERR! command failed
+npm ERR! command C:\Windows\system32\cmd.exe /d /s /c (node install/libvips && node install/dll-copy && prebuild-install) || (node install/can-compile && node-gyp rebuild && node install/dll-copy)
+npm ERR! sharp: Using cached C:\Users\aayo\AppData\Local\npm-cache\_libvips\libvips-8.14.5-win32-x64.tar.br
+npm ERR! sharp: Integrity check passed for win32-x64
+npm ERR! sharp: Creating C:\Users\aayo\Documents\Remote Project\2024 Active Project\python-and-DRF-with-terraform\frontend\node_modules\sharp\build\Release
+npm ERR! sharp: Copying DLLs from C:\Users\aayo\Documents\Remote Project\2024 Active Project\python-and-DRF-with-terraform\frontend\node_modules\sharp\vendor\8.14.5\win32-x64\lib to C:\Users\aayo\Documents\Remote Project\2024 Active Project\python-and-DRF-with-terraform\frontend\node_modules\sharp\build\Release
+npm ERR! prebuild-install warn install Request timed out
+npm ERR! gyp info it worked if it ends with ok
+npm ERR! gyp info using node-gyp@9.4.0
+npm ERR! gyp info using node@20.9.0 | win32 | x64
+npm ERR! gyp info find Python using Python version 3.11.2 found at "C:\Users\aayo\Documents\Remote Project\2024 Active Project\python-and-DRF-with-terraform\env\Scripts\python.exe"
+npm ERR! gyp ERR! find VS 
+npm ERR! gyp ERR! find VS msvs_version not set from command line or npm config
+npm ERR! gyp ERR! find VS VCINSTALLDIR not set, not running in VS Command Prompt
+npm ERR! gyp ERR! find VS could not use PowerShell to find Visual Studio 2017 or newer, try re-running with '--loglevel silly' for more details
+npm ERR! gyp ERR! find VS not looking for VS2015 as it is only supported up to Node.js 18
+npm ERR! gyp ERR! find VS not looking for VS2013 as it is only supported up to Node.js 8
+npm ERR! gyp ERR! find VS 
+npm ERR! gyp ERR! find VS **************************************************************
+npm ERR! gyp ERR! find VS You need to install the latest version of Visual Studio
+npm ERR! gyp ERR! find VS including the "Desktop development with C++" workload.
+npm ERR! gyp ERR! find VS For more information consult the documentation at:
+npm ERR! gyp ERR! find VS https://github.com/nodejs/node-gyp#on-windows
+npm ERR! gyp ERR! find VS **************************************************************
+npm ERR! gyp ERR! find VS 
+npm ERR! gyp ERR! configure error 
+npm ERR! gyp ERR! stack Error: Could not find any Visual Studio installation to use
+npm ERR! gyp ERR! stack     at VisualStudioFinder.fail (C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:122:47)
+npm ERR! gyp ERR! stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:75:16
+npm ERR! gyp ERR! stack     at VisualStudioFinder.findVisualStudio2013 (C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:380:14)
+npm ERR! gyp ERR! stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:71:14
+npm ERR! gyp ERR! stack     at VisualStudioFinder.findVisualStudio2015 (C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:364:14)
+npm ERR! gyp ERR! stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:67:12
+npm ERR! gyp ERR! stack     at failPowershell (C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:156:7)
+npm ERR! gyp ERR! stack     at VisualStudioFinder.parseData (C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:170:14)
+npm ERR! gyp ERR! stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:143:14
+npm ERR! gyp ERR! stack     at ChildProcess.exithandler (node:child_process:414:7)
+npm ERR! gyp ERR! System Windows_NT 10.0.19044
+npm ERR! gyp ERR! command "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild"
+npm ERR! gyp ERR! cwd C:\Users\aayo\Documents\Remote Project\2024 Active Project\python-and-DRF-with-terraform\frontend\node_modules\sharp
+npm ERR! gyp ERR! node -v v20.9.0
+npm ERR! gyp ERR! node-gyp -v v9.4.0
+npm ERR! gyp ERR! not ok
+
+npm ERR! A complete log of this run can be found in: C:\Users\aayo\AppData\Local\npm-cache\_logs\2024-03-21T07_11_50_157Z-debug-0.log
