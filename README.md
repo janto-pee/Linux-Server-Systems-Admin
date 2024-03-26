@@ -305,37 +305,52 @@ T
 
 ## Testing with Postman
 
+
+
+
+
+
+
+
+
+
+
 path('jobs/', views.getAllJobs, name='jobs'),
 
-```json
+```
 {
-    title:"Junior Software Engineer"
-    url:"https://jobs.smartrecruiters.com/LaunchCode/743999881643478-junior-software-engineer?oga=true&source=BuiltInNationwide"
-    company:"LaunchCode"
-    postDate:"12/24/2023 12:06:20"
-    jobSource:"BuiltIn"
-    slug:"junior-software-engineer-5702"
-    sentiment:
-    dateAdded:"2023-12-25T18:24:41.2694279"
-    tags:
-    viewCount:0
+    title: "DevOps Engineer"
+    description: ""
+    email: "devops@gmail.com"
+    address: "Lagos, Nigeria"
+    jobType: "Permanent"
+    education: "Bachelors"
+    industry: ""
+    experience: "THREE_YEAR_PLUS",
+    salary: "100,000",
+    positions: "Lead SRE"
+    company: "Google"
+    point: ""
+    lastDate: ""
+    user: "Ayo"
+    createdAt: ""
+}
+{
+    title: "Frontend Developer"
+    description: ""
+    email: "frontend@gmail.com"
+    address: "Port Novo, Benin"
+    jobType: "Permanent"
+    education: "Bachelors"
+    industry: ""
+    experience: "THREE_YEAR_PLUS",
+    salary: "100,000",
+    positions: "Lead Developer"
+    company: "Meta"
+    point: ""
+    lastDate: ""
+    user: "Abdou"
+    createdAt: ""
 }
 
 ```
-
-    path('jobs/new/', views.newJob, name='new_job'),
-    path('jobs/<str:pk>/', views.getJob, name='job'),
-    path('jobs/<str:pk>/update/', views.updateJob, name='update_job'),
-    path('jobs/<str:pk>/delete/', views.deleteJob, name='delete_job'),
-    path('stats/<str:topic>/', views.getTopicStats, name='get_topic_stats'),
-    path('jobs/<str:pk>/apply/', views.applyToJob, name='apply_to_job'),
-    path('me/jobs/applied/', views.getCurrentUserAppliedJobs, name='current_user_applied_jobs'),
-    path('me/jobs/', views.getCurrentUserJobs, name='current_user_jobs'),
-    path('jobs/<str:pk>/check/', views.isApplied, name='is_applied_to_job'),
-    path('job/<str:pk>/candidates/', views.getCandidatesApplied, name='get_candidates_applied'),
-
-
-     path('register/', views.register, name='register'),
-    path('me/', views.currentUser, name='current_user'),
-    path('me/update/', views.updateUser, name='update_user'),
-    path('upload/resume/', views.uploadResume, name='upload_resume'),
