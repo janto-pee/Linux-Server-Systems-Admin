@@ -1,4 +1,5 @@
 # Python and Django Rest Framework With Terraform
+
 ## Table of Contents
 
 1. [What is DRF?](#what-is-nextjs)
@@ -22,11 +23,11 @@
 
 ## What is Django Rest Framework?
 
-_Django REST framework abbreviated as "DRF" is a powerful and flexible toolkit for building Web APIs. Although DRF and Django have a lot of similarities, they are suited for differentpurposes. 
+\_Django REST framework abbreviated as "DRF" is a powerful and flexible toolkit for building Web APIs. Although DRF and Django have a lot of similarities, they are suited for differentpurposes.
 
 Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source
 
-DRF is a powerful and flexible toolkit used to build Web APIs on top of Django. While Django deals with the overall web application, including both frontend and backend components, DRF is used to build RESTful APIs that allow interaction and communication between different software components. 
+DRF is a powerful and flexible toolkit used to build Web APIs on top of Django. While Django deals with the overall web application, including both frontend and backend components, DRF is used to build RESTful APIs that allow interaction and communication between different software components.
 
 With DRF, it’s easier to design the CRUD operations and use a Django Server as a REST API. Django Rest framework leverages Django’s capabilities to facilitate the development of scalable, maintainable, and secure APIs. It adheres to Django’s principles like DRY (Don’t Repeat Yourself) and emphasizes reusability and modularity.
 
@@ -34,7 +35,7 @@ With DRF, it’s easier to design the CRUD operations and use a Django Server as
 
 This project documentation does not replace the official documentation, which is absolutely great. Therefore, I highly encourage you to go through at least the [DRF features](https://www.djangoproject.com/) section before you use this project, so you'll be familiar with the terminology and tools and some of the features they provide that are similar.
 
-Please review the table of contents to get an idea of each of the topics we will be touching in this extensive tutorial. 
+Please review the table of contents to get an idea of each of the topics we will be touching in this extensive tutorial.
 
 Now, with all that said, if you are ready, let's jump in!
 
@@ -48,17 +49,23 @@ mkdir indeedjob
 
 # cd nextjs-fullstack-app-template
 ```
-Lets install the virtualenv tool to create an isolated Python environments. 
+
+Lets install the virtualenv tool to create an isolated Python environments.
+
 ```bash
 python -m pip install --user virtualenv
 python -m virtualenv --help
 ```
+
 We will create and activate a virtual environment using the installed tool;
+
 ```bash
 virtualenv env
 source env/scriptsactivate
 ```
+
 we will need to install django, django-rest-framework, django-filters as well as other programs in the requirements.txt
+
 ```
 django
 djangorestframework
@@ -81,13 +88,12 @@ Now install
 pip install -r requirements.txt
 ```
 
-
 ## Folder Structure
 
 We would like for this project to host both the frontend and backend of this project.
 
 - `mkdir frontend` - will use typescript, next.js, react, tailwindcss
-- `mkdir backend`  - Will use python, django-rest-framework
+- `mkdir backend` - Will use python, django-rest-framework
 
 Now lets proceed with the `backend` :
 
@@ -98,12 +104,12 @@ django-admin manage.py startapp job
 django-admin manage.py startapp account
 ```
 
-The `django-admin startproject backend .` helps to auto-generate some code that establishes a Django project – a collection of settings for an instance of Django, including database configuration, Django-specific options and application-specific settings. The `django-admin manage.py startapp job` is a command-line utility for administrative tasks. 
-
+The `django-admin startproject backend .` helps to auto-generate some code that establishes a Django project – a collection of settings for an instance of Django, including database configuration, Django-specific options and application-specific settings. The `django-admin manage.py startapp job` is a command-line utility for administrative tasks.
 
 ## Database (Postgresql) Setup
 
 Make sure you have a postgres database set up already, now go to `backend/settings.py` and add the following
+
 ```bash
 import os
 import dotenv
@@ -131,8 +137,6 @@ INSTALLED_APPS = [
 ]
 ```
 
-
-
 ## Configure GDAL
 
 we will use the GDAL library Geocoding feature. The Python GDAL supports geocoding operations, enabling the conversion of addresses or place names into geographic coordinates. The library assists in transforming coordinates between different coordinate reference systems. This feature is valuable when working with datasets that use varying projections.
@@ -146,6 +150,7 @@ now paste the GDAL in the backend and your flder structure should look this
 
 
 ```
+
 run pip install GDAL....
 Finally add the followingto settigs.py
 
@@ -157,21 +162,22 @@ GEOS_LIBRARY_PATH = VIRTUAL_ENV_BASE + '/lib/site-packages/osgeo/geos_c.dll'
 GDAL_LIBRARY_PATH = VIRTUAL_ENV_BASE + '/lib/site-packages/osgeo/gdal304.dll'
 ```
 
-now run 
+now run
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
-
 
 ### Set Environment Variables
 
 Since our application takes its configuration from environment variables, To help with that, we can add Python-dotenv to our application to make it load the configuration from a .env file when it is present (e.g. in development) while remaining configurable via the environment
 
 in settings.py,
+
 ```bash
 import dotenv
 dotenv.read.dotenv()
 ```
+
 now create .env attheroot level of backend
 
 ```json
@@ -182,17 +188,12 @@ now create .env attheroot level of backend
 
 ```
 
-
 ### Create Super User
 
 python manage.py createsuperuser
 python manage.py runserver
 
-
-
-
 ## Job Model
-
 
 ```python
 from datetime import *
@@ -277,7 +278,9 @@ class Job(models.Model):
         super(Job, self).save(*args, **kwargs)
 
 ```
+
 add all installed app req to settings/Installed_Apps
+
 ```
 rest_framework
 django-filters
@@ -287,25 +290,52 @@ job.apps.JobConfig'
 ## Job Serializer
 
 T
-## Job Views
 
+## Job Views
 
 ## Adding Search and Filters
 
-
 ## Adding Pagination
-
 
 ## Setup Account
 
-
-
 ## Account Serializer & Model
-
-
 
 ## Add Path to URLs.py
 
-
-
 ## Testing with Postman
+
+path('jobs/', views.getAllJobs, name='jobs'),
+
+```json
+{
+    title:"Junior Software Engineer"
+    url:"https://jobs.smartrecruiters.com/LaunchCode/743999881643478-junior-software-engineer?oga=true&source=BuiltInNationwide"
+    company:"LaunchCode"
+    postDate:"12/24/2023 12:06:20"
+    jobSource:"BuiltIn"
+    slug:"junior-software-engineer-5702"
+    sentiment:
+    dateAdded:"2023-12-25T18:24:41.2694279"
+    tags:
+    viewCount:0
+}
+
+```
+
+    path('jobs/new/', views.newJob, name='new_job'),
+    path('jobs/<str:pk>/', views.getJob, name='job'),
+    path('jobs/<str:pk>/update/', views.updateJob, name='update_job'),
+    path('jobs/<str:pk>/delete/', views.deleteJob, name='delete_job'),
+    path('stats/<str:topic>/', views.getTopicStats, name='get_topic_stats'),
+    path('jobs/<str:pk>/apply/', views.applyToJob, name='apply_to_job'),
+    path('me/jobs/applied/', views.getCurrentUserAppliedJobs, name='current_user_applied_jobs'),
+    path('me/jobs/', views.getCurrentUserJobs, name='current_user_jobs'),
+    path('jobs/<str:pk>/check/', views.isApplied, name='is_applied_to_job'),
+    path('job/<str:pk>/candidates/', views.getCandidatesApplied, name='get_candidates_applied'),
+
+
+     path('register/', views.register, name='register'),
+    path('me/', views.currentUser, name='current_user'),
+    path('me/update/', views.updateUser, name='update_user'),
+    path('upload/resume/', views.uploadResume, name='upload_resume'),
