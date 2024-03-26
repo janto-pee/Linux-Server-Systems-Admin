@@ -283,3 +283,29 @@ rest_framework
 django-filters
 job.apps.JobConfig'
 ```
+
+## Job Serializer
+
+T
+## Job Views
+
+
+## Adding Search and Filters
+
+
+## Adding Pagination
+
+
+## Setup Account
+
+
+
+## Account Serializer & Model
+
+
+
+## Add Path to URLs.py
+
+
+
+## Testing with Postman
