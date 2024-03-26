@@ -1,4 +1,29 @@
+import type { InferGetStaticPropsType, GetStaticProps } from 'next';
 import Image from 'next/image';
+
+type Job = {
+  title: 'DevOps Engineer';
+  description: '';
+  email: 'devops@gmail.com';
+  address: 'Lagos, Nigeria';
+  jobType: 'Permanent';
+  education: 'Bachelors';
+  industry: '';
+  experience: 'THREE_YEAR_PLUS';
+  salary: '100,000';
+  positions: 'Lead SRE';
+  company: 'Google';
+  point: '';
+  lastDate: '';
+  user: 'Ayo';
+  createdAt: '';
+};
+
+export const getStaticProps = (async (context) => {
+  const res = await fetch('...');
+  const jobs = await res.json();
+  return { props: { jobs } };
+}) satisfies GetStaticProps<{ jobs: Job }>;
 
 export default function Home() {
   return (
