@@ -23,7 +23,7 @@
 
 ## What is Django Rest Framework?
 
-\_Django REST framework abbreviated as "DRF" is a powerful and flexible toolkit for building Web APIs. Although DRF and Django have a lot of similarities, they are suited for differentpurposes.
+Django REST framework abbreviated as "DRF" is a powerful and flexible toolkit for building Web APIs. Although DRF and Django have a lot of similarities, they are suited for differentpurposes.
 
 Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source
 
@@ -289,19 +289,95 @@ job.apps.JobConfig'
 
 ## Job Serializer
 
-T
+We need to create a serializer class for the Job Model. Serializers allow complex data such as querysets and model instances to be converted to native Python datatypes that can then be easily rendered into JSON, XML or other content types
+
+```python
+from rest_framework import serializers
+from .models import CandidatesApplied, Job
+
+class JobSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Job
+        fields ='__all__'
+```
 
 ## Job Views
+Next is to create the views to perform CRUD operations. framework also allows you to work with regular function based views. It provides a set of simple decorators that wrap your function based views to ensure they receive an instance of Request (rather than the usual Django HttpRequest) and allows them to return a Response (instead of a Django HttpResponse), and allow you to configure how the request is processed.
 
-## Adding Search and Filters
+```python
+from django.shortcuts import render
+from django.utils import timezone
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework import status
+from django.db.models import Avg, Min, Max, Count
+from rest_framework.pagination import PageNumberPagination
 
-## Adding Pagination
+from rest_framework.permissions import IsAuthenticated
+
+from .serializers import CandidatesAppliedSerializer, JobSerializer
+from .models import CandidatesApplied, Job
+
+from django.shortcuts import get_object_or_404
+from .filters import JobsFilter
+
+
+# Create your views here.
+
+@api_view(['GET'])
+def getAllJobs(request):
+
+    filterset = JobsFilter(request.GET, queryset=Job.objects.all().order_by('id'))
+
+    count = filterset.qs.count()
+
+    # Pagination
+    resPerPage = 3
+
+    paginator = PageNumberPagination()
+    paginator.page_size = resPerPage
+
+    queryset = paginator.paginate_queryset(filterset.qs, request)
+
+
+    serializer = JobSerializer(queryset, many=True)
+    return Response({
+        "count": count,
+        "resPerPage": resPerPage,
+        'jobs': serializer.data
+        })
+
+
+@api_view(['GET'])
+def getJob(request, pk):
+    job = get_object_or_404(Job, id=pk)
+
+    serializer = JobSerializer(job, many=False)
+
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def newJob(request):
+    request.data['user'] = request.user
+    data = request.data
+
+    job = Job.objects.create(**data)
+
+    serializer = JobSerializer(job, many=False)
+    return Response(serializer.data)
+```
+
+
+<!-- ## Adding Pagination
 
 ## Setup Account
 
+
 ## Account Serializer & Model
 
-## Add Path to URLs.py
+## Add Path to URLs.py -->
 
 ## Testing with Postman
 
@@ -311,46 +387,3 @@ T
 
 
 
-
-
-
-
-path('jobs/', views.getAllJobs, name='jobs'),
-
-```
-{
-    title: "DevOps Engineer"
-    description: ""
-    email: "devops@gmail.com"
-    address: "Lagos, Nigeria"
-    jobType: "Permanent"
-    education: "Bachelors"
-    industry: ""
-    experience: "THREE_YEAR_PLUS",
-    salary: "100,000",
-    positions: "Lead SRE"
-    company: "Google"
-    point: ""
-    lastDate: ""
-    user: "Ayo"
-    createdAt: ""
-}
-{
-    title: "Frontend Developer"
-    description: ""
-    email: "frontend@gmail.com"
-    address: "Port Novo, Benin"
-    jobType: "Permanent"
-    education: "Bachelors"
-    industry: ""
-    experience: "THREE_YEAR_PLUS",
-    salary: "100,000",
-    positions: "Lead Developer"
-    company: "Meta"
-    point: ""
-    lastDate: ""
-    user: "Abdou"
-    createdAt: ""
-}
-
-```
